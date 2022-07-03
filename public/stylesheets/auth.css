@@ -82,6 +82,17 @@
     color: var(--color-primary-50);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   }
+
+  button.naver{
+    background-color: rgba(0, 201, 66, 1);
+    border: none;
+    color:white
+  }
+  button.kakao{
+    background-color: rgba(248, 238, 43, 1);
+    border: none;
+    color:black
+  }
   
   .footer {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
@@ -99,9 +110,14 @@
     cursor: pointer;
   }
   
-  .form button:hover {
-    background-color: var(--color-primary-500);
-    border-color: var(--color-primary-500);
+  .form button.naver:hover {
+    background-color: rgba(0, 201, 66, 0.8);
+   
+  }
+
+  .form button.kakao:hover {
+    background-color: rgba(248, 238, 43, 0.8);
+   
   }
   
   @media (min-width: 768px) {

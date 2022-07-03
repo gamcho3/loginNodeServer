@@ -4,15 +4,19 @@ const router = express.Router();
 const passport = require('passport');
 
 
-router.get('/naver', passport.authenticate('naver', { authType: 'reprompt' }));
+// Setting the naver oauth routes
+router.get('/naver', 
+    passport.authenticate('naver', null), function(req, res) {
+        console.log('/auth/naver failed, stopped');
+    });
 
-router.get(
-    '/naver/callback',
-    passport.authenticate('naver', { failureRedirect: '/' }),
-    (req, res) => {
-       res.redirect('/');
-    },
- );
+// creates an account if no account of the new user
+router.get('/naver/callback', 
+    passport.authenticate('naver', {
+        failureRedirect: '#!/auth/login'
+    }), function(req, res) {
+        res.redirect('/'); 
+    });
 
 router.get('/',loginController.login);
 

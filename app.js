@@ -4,14 +4,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var passport = require('passport');
-const mongoConnect = require('./util/database');
-
+const passportConfing = require('./passport/naverStrategy');
+const mongoConnect = require('./util/database').mongoConnect;
+const session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRoutuer = require('./routes/login');
-
+require('dotenv').config();
 var app = express();
-
+passportConfing();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -25,7 +26,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //social login
-
+app.use(session({
+  resave:false,
+  saveUninitialized:false,
+  secret:process.env.SECRET
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -50,8 +55,8 @@ app.use(function(err, req, res, next) {
 
 
 
-mongoConnect((client)=>{
-  console.log(client);
+mongoConnect(()=>{
+  // console.log(client);
   const server = app.listen(app.get('port'),()=>{
     console.log(`express server on ${server.address().port}`);
   })
