@@ -5,11 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/auth.css">
 </head>
 <body>
-    <div style="display: flex">
-        <button>카카오 로그인</button>
-    <button>네이버 로그인</button>
+    <header class="header">
+        <a>
+          <img src="/assets/logo.png" alt="" width="200">
+        </a>
+        <nav>
+          <ul>
+            <a href="/login">
+              <li>로그인</li>
+            </a>
+           
+          </ul>
+        </nav>
+      </header>
+      <div class="containerAuth">
+        <section class='content-box'>
+          <h1>로그인 하기</h1>
+          <form class='form'>
+            <div class='controls'>
+                <div class='actions'>
+                    <button>네이버 로그인</button>
+                  </div>
+                  <div class='actions'>
+                    <button>카카오 로그인</button>
+                  </div>
+            </div>
+            
+          </form>
+        </section>
+        <div class='footer' >
+          <a>create an account</a>
+        </div>
+    
+      </div>
     </div>
     
 </body>
