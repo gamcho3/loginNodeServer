@@ -3,8 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var passport = require('passport');
-const passportConfing = require('./passport/naverStrategy');
 const mongoConnect = require('./util/database').mongoConnect;
 const session = require('express-session');
 var indexRouter = require('./routes/index');
@@ -12,7 +10,7 @@ var usersRouter = require('./routes/users');
 var loginRoutuer = require('./routes/login');
 require('dotenv').config();
 var app = express();
-passportConfing();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -31,9 +29,6 @@ app.use(session({
   saveUninitialized:false,
   secret:process.env.SECRET
 }));
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login',loginRoutuer);
