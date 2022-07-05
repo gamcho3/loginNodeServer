@@ -1,13 +1,14 @@
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
+const mongoose = require('mongoose');
 
-let _db;
+
 
 const mongoConnect = (callback)=>{
-    MongoClient.connect('mongodb+srv://park:qkrdydwls3@cluster0.f6caf.mongodb.net/?retryWrites=true&w=majority')
-    .then(client =>{
-        console.log('mongodb connect');
-        _db = client.db();
+    mongoose.connect('mongodb+srv://park:qkrdydwls3@cluster0.f6caf.mongodb.net/?retryWrites=true&w=majority')
+    .then(() => {
+        console.log('mongodb & mongoose connect');
+       
         callback();
     }).catch(err => {
         console.log(err)

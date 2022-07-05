@@ -1,17 +1,13 @@
-const getDb = require('../util/database').getDb
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+//const passportLocalMongoose = require('passport-local-mongoose');
 
-class User{
-    constructor(name,email,imgUrl){
-this.name = name;
-this.email = email;
-this.imgUrl = imgUrl;
-    }
-    save(){
-        const db = getDb;
-        db.collection('user').insertOne(this).then(result =>{
-            console.log(result);
-        }).catch(err=>{
-            console.log(err)
-        })
-    }
-}
+const User = new Schema({
+    id:String,
+    name: String,
+    email:String
+});
+
+//User.plugin(passportLocalMongoose,{usernameField:'email'});
+
+module.exports = mongoose.model('User',User);
