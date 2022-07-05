@@ -33,12 +33,12 @@
       <nav>
         <ul>
       
-          <% if(userId == 'no') {%>
+          <% if(userId == '로그인 해주세요') {%>
           <a href="/login">
             <li>로그인</li>
           </a>
          <% } else { %>
-          <a href="/logout?token=<%= token %>">
+          <a href="/logout?token=<%= token %>&div=<%= div %>">
             <li>로그아웃</li>
           </a>
           <% } %>
